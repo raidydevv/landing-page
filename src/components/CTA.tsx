@@ -223,10 +223,18 @@ const CTA: React.FC = () => {
                       </div>
                       
                 {formValid ? (
-                  <motion.a
-                    href="https://wa.link/s1h50h"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <motion.button
+                    type="button"
+                    onClick={() => {
+                      if (window.fbq) {
+                        window.fbq('track', 'Lead', {
+                          name,
+                          email,
+                          phone,
+                        });
+                      }
+                      window.open('https://wa.link/s1h50h', '_blank');
+                    }}
                     className="w-full text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center mt-2 relative overflow-hidden"
                     style={{ backgroundColor: '#10b981' }}
                   >
@@ -243,7 +251,7 @@ const CTA: React.FC = () => {
                       </svg>
                       FALAR COM ESPECIALISTA
                     </span>
-                  </motion.a>
+                  </motion.button>
                 ) : (
                   <motion.button
                     className="w-full text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center mt-2 cursor-not-allowed opacity-80 relative overflow-hidden"
