@@ -264,16 +264,18 @@ const Testimonials: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-8 rounded-xl border border-purple-800/30">
+        <div className="mt-16 bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-4 sm:p-8 rounded-xl border border-purple-800/30">
           <div className="text-center">
             <h3 className="text-2xl font-bold text-white mb-6">Se eles conseguiram, você também pode!</h3>
-            <button
+            <a
               id="btn-transformar"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-4 px-8 rounded-lg hover:opacity-90 transition duration-300 transform hover:scale-105"
-              onClick={scrollToCarlos}
+              href="https://pay.kirvano.com/d118ebdf-b8ae-481f-af24-90448576c05d"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-4 px-4 sm:px-8 rounded-lg hover:opacity-90 transition duration-300 transform hover:scale-105 text-sm sm:text-lg whitespace-normal break-words"
             >
-              QUERO TRANSFORMAR MEUS RESULTADOS AGORA
-            </button>
+              GARANTIR MEU E-BOOK
+            </a>
             <p className="mt-4 text-gray-400 text-sm">
               Acesso imediato + Garantia de 30 dias
             </p>

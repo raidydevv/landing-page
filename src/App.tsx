@@ -102,12 +102,14 @@ function App() {
             <p className="mb-6 text-purple-200 text-base font-semibold">
               👉 Vai fechar essa aba e continuar reclamando da vida, ou vai dar o primeiro passo agora?
             </p>
-            <button
+            <a
+              href="https://pay.kirvano.com/d118ebdf-b8ae-481f-af24-90448576c05d"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold px-6 py-3 rounded-lg hover:opacity-90 transition mb-3 text-lg shadow-lg"
-              onClick={() => setShowExitModal(false)}
             >
               QUERO COMEÇAR AGORA
-            </button>
+            </a>
             <button
               className="w-full text-gray-400 hover:text-gray-200 text-sm py-2 rounded-lg transition"
               onClick={() => setShowExitModal(false)}
