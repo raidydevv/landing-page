@@ -172,15 +172,6 @@ const Testimonials: React.FC = () => {
     }
   ];
 
-  // Função para scroll lento até o card do Carlos Oliveira
-  const scrollToCarlos = () => {
-    const el = document.getElementById('card-carlos');
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 40; // offset para header
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
-
   return (
     <section id="testimonials" className="py-20 bg-black">
       <div className="container mx-auto px-4">
@@ -234,7 +225,6 @@ const Testimonials: React.FC = () => {
             <div 
               key={index} 
               className="bg-gray-900 p-8 rounded-xl shadow-xl hover:shadow-purple-900/20 transition-shadow duration-300 border border-gray-800 flex flex-col h-full"
-              id={testimonial.author === 'Carlos Oliveira' ? 'card-carlos' : undefined}
             >
               <div className="mb-4">
                 <div className="inline-block bg-purple-900/30 text-purple-300 px-3 py-1 rounded-full text-sm font-medium mb-4">

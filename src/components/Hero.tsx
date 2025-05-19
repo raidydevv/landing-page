@@ -94,29 +94,6 @@ const Hero: React.FC = () => {
     setIsPlaying(!isPlaying);
   };
 
-  // Função para scroll suave até o botão de transformar resultados
-  const scrollToTransformarBtn = () => {
-    const el = document.getElementById('btn-transformar');
-    if (el) {
-      const targetY = el.getBoundingClientRect().top + window.scrollY - 450;
-      const startY = window.scrollY;
-      const distance = targetY - startY;
-      const duration = 1800; // duração mais lenta em ms
-      let start: number | null = null;
-
-      function step(timestamp: number) {
-        if (!start) start = timestamp;
-        const elapsed = timestamp - start;
-        const progress = Math.min(elapsed / duration, 1);
-        window.scrollTo(0, startY + distance * progress);
-        if (progress < 1) {
-          window.requestAnimationFrame(step);
-        }
-      }
-      window.requestAnimationFrame(step);
-    }
-  };
-
   return (
     <section className="text-white py-10 sm:py-16 md:py-20 pt-16">
       <div className="container mx-auto px-4">
