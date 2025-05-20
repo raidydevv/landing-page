@@ -158,14 +158,14 @@ const CTA: React.FC = () => {
         <div className="max-w-md mx-auto">
           <div className="bg-black rounded-xl shadow-xl overflow-hidden border border-gray-800">
             <div className="p-6">
-              <div className="text-center mb-4">
+              <div id="form-homeoffice" className="text-center mb-4">
                 <div className="inline-flex items-center bg-gray-800 rounded-lg px-3 py-1 mb-3">
                   <span className="text-green-500 text-lg mr-2">✓</span>
                   <span className="text-white text-sm">Atendimento personalizado</span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-1">Comece sua jornada home office</h3>
                 <p className="text-gray-400 text-sm">Fale com um de nossos especialistas</p>
-                    </div>
+              </div>
 
               <form className="space-y-3">
                       <div>

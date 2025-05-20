@@ -6,18 +6,23 @@ const CountdownBanner: React.FC = () => {
     seconds: 0
   });
   
-  // Usando useState para manter a data alvo constante entre renderizações
-  const [targetDate] = useState(() => {
+  // Use state para armazenar a data alvo e permitir atualização
+  const [targetDate, setTargetDate] = useState(() => {
     const saved = localStorage.getItem('countdownTargetDate');
     if (saved) {
       return new Date(saved);
     } else {
-      const date = new Date();
-      date.setMinutes(date.getMinutes() + 15);
-      localStorage.setItem('countdownTargetDate', date.toISOString());
-      return date;
+      return createNewTargetDate();
     }
   });
+
+  // Função para criar uma nova data alvo (15 minutos no futuro)
+  function createNewTargetDate() {
+    const date = new Date();
+    date.setMinutes(date.getMinutes() + 15);
+    localStorage.setItem('countdownTargetDate', date.toISOString());
+    return date;
+  }
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -33,8 +38,13 @@ const CountdownBanner: React.FC = () => {
           seconds: seconds
         });
       } else {
-        // Quando o tempo acabar
+        // Quando o tempo acabar, resetar o cronômetro
         setTimeLeft({ minutes: 0, seconds: 0 });
+        
+        // Criar uma nova data alvo e atualizar o estado e localStorage
+        const newTarget = createNewTargetDate();
+        setTargetDate(newTarget);
+        console.log('Cronômetro resetado para', newTarget);
       }
     };
 
@@ -65,7 +75,9 @@ const CountdownBanner: React.FC = () => {
           </div>
           <div className="ml-4">
             <a 
-              href="#cta" 
+              href="https://pay.kirvano.com/d118ebdf-b8ae-481f-af24-90448576c05d" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white text-purple-800 px-4 py-1 rounded-lg font-medium hover:bg-gray-100 transition-colors"
             >
               Garantir Acesso

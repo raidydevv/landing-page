@@ -123,14 +123,65 @@ const Hero: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-              <a
-                href="https://pay.kirvano.com/d118ebdf-b8ae-481f-af24-90448576c05d"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => {
+                  // Procurar o input de email (ou seu label)
+                  const emailLabels = Array.from(document.querySelectorAll('label')).filter(
+                    label => label.textContent?.includes('Seu melhor e-mail')
+                  );
+                  
+                  if (emailLabels.length > 0) {
+                    // Encontramos o label do email
+                    const emailLabel = emailLabels[0];
+                    const emailInput = document.getElementById('email'); // O ID do input de email no CTA
+                    const targetElement = emailInput || emailLabel;
+                    
+                    // Calcular a posição para manter o elemento no final da tela visível
+                    // Pegamos a posição do elemento e subtraímos (altura da janela - altura desejada de visibilidade)
+                    const windowHeight = window.innerHeight;
+                    const visiblePortion = 100; // Quantos pixels do elemento queremos mostrar
+                    const position = targetElement.getBoundingClientRect().top + window.pageYOffset - (windowHeight - visiblePortion) - 30; // 30px mais para cima
+                    
+                    window.scrollTo({
+                      top: position,
+                      behavior: 'smooth'
+                    });
+                    console.log('Rolando para mostrar o campo de email na parte inferior da tela');
+                  } else {
+                    // Se não encontrar o elemento específico, procurar o elemento com texto "Atendimento personalizado"
+                    const personalizedElements = Array.from(document.querySelectorAll('span')).filter(
+                      span => span.textContent?.includes('Atendimento personalizado')
+                    );
+                    
+                    if (personalizedElements.length > 0) {
+                      const targetElement = personalizedElements[0];
+                      // Ajustar para mostrar um pouco mais do form
+                      const position = targetElement.getBoundingClientRect().top + window.pageYOffset - 50;
+                      
+                      window.scrollTo({
+                        top: position,
+                        behavior: 'smooth'
+                      });
+                      console.log('Rolando para mostrar o início do formulário');
+                    } else {
+                      // Último fallback
+                      const ctaSection = document.getElementById('cta');
+                      if (ctaSection) {
+                        const position = ctaSection.getBoundingClientRect().top + window.pageYOffset + 250;
+                        window.scrollTo({
+                          top: position,
+                          behavior: 'smooth'
+                        });
+                        console.log('Usando seção CTA como fallback');
+                      }
+                    }
+                  }
+                }}
                 className="pulse-button bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg hover:opacity-90 transition duration-300 w-full sm:w-auto text-center"
               >
                 GARANTIR MEU E-BOOK 🔥
-              </a>
+              </button>
               <div className="flex items-center justify-center sm:justify-start text-gray-400 py-2">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
